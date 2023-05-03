@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable indent */
 /* eslint-disable linebreak-style */
+const { response } = require('express')
 const tasksModel = require('../models/tasksModel')
 
 const getAll = async (_req, res) => {
@@ -13,7 +14,14 @@ const createTask = async (req, res) => {
 	return res.status(201).json(createdTask)
 }
 
+const deleteTask = async (req, res) => {
+	const { id } = req.params
+	await tasksModel.deleteTask(id)
+	return response.status(204).json()
+}
+
 module.exports = {
-    getAll,
+  getAll,
 	createTask,
+	deleteTask,
 }
