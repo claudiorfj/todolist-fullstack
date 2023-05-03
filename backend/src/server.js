@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
 const app = require('./app')
+require('dotenv').config()
 
-app.listen(1337, () => console.log('Server running on port 1337'))
+const PORT = process.env.PORT || 1337
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
